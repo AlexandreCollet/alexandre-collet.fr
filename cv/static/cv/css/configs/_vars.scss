@@ -1,0 +1,94 @@
+/**
+ * COLORS
+ */
+
+$color-blue   : #16a6b6;
+$color-green  : #b3cf46;
+$color-yellow : #F8C93D;
+$color-red    : #fd6a62;
+
+$color-text   : #999;
+$color-bg     : #F0F0F0;
+
+$sectionsColors : (
+	"blue"   : #16a6b6,
+	"green"  : #b3cf46,
+	"yellow" : #F8C93D,
+	"red"    : #fd6a62,
+);
+$colors : map_merge(
+	(
+		"text" : #999,
+		"bg"   : #F0F0F0
+	),
+	$sectionsColors
+);
+/**
+ * FONTS
+ */
+
+$font-titles : "bebas";
+$font-texts  : "ubuntu";
+$font-icons  : "basics_icons";
+
+$font-icons-map : (
+	"twitter"  : 't',
+	"linkedin" : 'l',
+	"github"   : 'g',
+	"download" : 'd',
+	"viadeo"   : 'o'
+);
+
+/**
+ * GUTTER AND BREAKPOINTS
+ */
+
+$gutter      : 25px;
+$breakpoints : 768px 992px 1200px;
+
+/**
+ * BUTTONS PLUGIN
+ */
+
+$button-height      : 50px;
+$button-color       : white;
+$button-font        : $font-titles;
+$button-font-size   : 20px;
+$button-bgColorsMap : $sectionsColors;
+
+$button-icon-font      : $font-icons;
+$button-icon-font-size : 30px;
+$button-icon-padding   : 75px;
+$button-icon-map : (
+	"twitter"  : 't',
+	"linkedin" : 'l',
+	"github"   : 'g',
+	"download" : 'd',
+	"viadeo"   : 'o',
+	"home"     : 'h',
+);
+
+/**
+ * ALERTS PLUGIN
+ */
+
+$alert-font  : $font-texts;
+$alert-types : (
+	"info"    : color("blue"),
+	"success" : color("green"),
+	"warning" : color("yellow"),
+	"error"   : color("red")
+);
+
+/**
+ * LOADERS PLUGIN
+ */
+$loader-size: 25px;
+$loader-color-default: $color-text;
+$loader-margin: $gutter;
+$loader-icon-font: $font-icons;
+$loader-icon-char: "0";
+$loader-colorsMap: $sectionsColors;
+$loader-animation-name: 'loader-spin-animation';
+$loader-animation-duration: 1s;
+$loader-animation-function: linear;

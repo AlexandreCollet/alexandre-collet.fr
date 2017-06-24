@@ -1,0 +1,35 @@
+h3{
+    text-align: left;
+    font-family: $font-titles;
+    font-size: 50px;
+    border-bottom: 8px solid;
+    padding : 0 25px;
+    #home &{color:$color-blue;}
+    #folio &{color:$color-green;}
+    #cv &{color:$color-yellow;}
+    #contact &{color:$color-red;}
+}
+
+h4{
+    text-align: right;
+    font-family: $font-titles;
+    border-bottom: 2px solid;
+    font-size: 30px;
+    font-weight: bold;
+    #home &{color:$color-blue;}
+    #folio &{color:$color-green;}
+    #contact &{color:$color-red;}
+    #cv &{color:$color-yellow;}
+}
+h5{
+    font-family:$font-titles;
+    font-size: 25px;
+    #github & {color:$color-text;}
+    #timeline &{color:$color-text;}
+    #skills &{
+        display:block;
+        color:white;
+    }
+    .skill_primary & { padding-left: 25px; }
+    .skill_secondary & { padding: 0 25px; }
+}

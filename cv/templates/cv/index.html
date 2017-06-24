@@ -1,0 +1,37 @@
+{% extends "cv/partials/layout.html" %}
+
+{% load static %}
+{% load sass_tags %}
+{% load compress %}
+
+{% block title %}Alexandre Collet | Developpeur web full stack{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" media="all" href="{% sass_src 'cv/css/style.scss' %}" />
+{% endblock css %}
+
+{% block js %}
+    {% compress js %}
+        <script type="text/javascript" src="{% static 'cv/js/tools/classname.js' %}"></script>
+        <script type="text/javascript" src="{% static 'cv/js/libs/github-api/github.js' %}"></script>
+        <script type="text/javascript" src="{% static 'cv/js/libs/smooth-scroll/smooth-scroll.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'cv/js/libs/ajax.js' %}"></script>
+        <script type="text/javascript" src="{% static 'cv/js/libs/validator.js' %}"></script>
+        <script type="text/javascript" src="{% static 'cv/js/libs/alert.js' %}"></script>
+        <script type="text/javascript" src="{% static 'cv/js/libs/unlocker.js' %}"></script>
+        <script type="text/javascript" src="{% static 'cv/js/script.js' %}"></script>
+    {% endcompress %}
+{% endblock js %}
+
+{% block content %}
+    <article class="container">
+        {% include "cv/sections/header.html" %}
+        {% include "cv/sections/home.html" %}
+        {% include "cv/sections/folio.html" %}
+        {% include "cv/sections/cv.html" %}
+        {% include "cv/sections/contact.html" %}
+        {% include "cv/sections/footer.html" %}
+    </article>
+
+    <a id="up" class="smoothScroll" href="#">8</a>
+{% endblock content %}

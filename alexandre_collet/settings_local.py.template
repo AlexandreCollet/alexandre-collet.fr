@@ -1,0 +1,17 @@
+DEBUG = True
+ALLOWED_HOSTS = ['alexandre-collet.dev']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'alexandre_collet',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'dev_postgres',
+        'PORT': 5432,
+    }
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+STATIC_ROOT = "/code/static/"

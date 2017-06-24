@@ -1,0 +1,71 @@
+#realisations, #github{
+    @include inline-block(top);
+    padding: $gutter;
+    @include breakpoint-tiny-small{
+        width:100% !important;
+    }
+}
+
+#realisations{
+    @include size(width 60%);
+}
+
+#github{
+    @include size(width 40%);
+}
+
+.realisation{
+
+    @include relative;
+    @include inline-block(top);
+    @include size(width 100% height 150px);
+    margin-top: $gutter;
+    @include breakpoint-small{
+        @include size(width ((nth($breakpoints,1) - $gutter*4)/2));
+    }
+    @include breakpoint-medium{
+        @include size(width (((nth($breakpoints,2)- $gutter)*0.6 - $gutter*3)/2));
+    }
+    @include breakpoint-large{
+        @include size(width (((nth($breakpoints,3)- $gutter)*0.6 - $gutter*3)/2));
+    }
+    &:nth-child(odd){margin-right: $gutter;}
+    line-height: 150px;
+    background-color: $color-green;
+    border-radius: 5px;
+    > h4{
+        text-align: center;
+        font-size: 45px;
+        color : white !important;
+        border-bottom-width: 0px;
+        border-radius: 5px;
+    }
+    &.offline{ opacity:0.5;}
+}
+
+.repository{
+    margin-top: $gutter;
+    mark{
+        font-family: $font-icons;
+        margin-right: 5px;
+    }
+    p {
+        color:$color-text;
+        font-family: $font-texts;
+    }
+    .summary{
+        display: block;
+        border-bottom: 1px solid;
+        em{margin-right:$gutter/2;}
+        font-size: 12px;
+    }
+    .description{
+        font-size: 18px;
+    }
+}
+
+#linkGithub{
+    display: block;
+    @include size(width 250px);
+    margin: $gutter auto 0;
+}

@@ -1,0 +1,21 @@
+body,html{
+    background-color: $color-bg;
+}
+
+body.noSelect{
+    user-select: none;
+}
+
+.container{
+    margin: 0 auto;
+    width: 100%;
+    @include breakpoint-small {
+    	width: nth($breakpoints,1) - $gutter;
+    }
+    @include breakpoint-medium {
+    	width: nth($breakpoints,2) - $gutter;
+    }
+    @include breakpoint-large {
+    	width: nth($breakpoints,3) - $gutter;
+    }
+}

@@ -1,0 +1,36 @@
+#svgContainer{
+	@include relative;
+	@include inline-block(middle);
+	@include size(width 100%);
+	padding-bottom: 100%;
+	@include breakpoint-small{
+		@include size(width 50%);
+		margin-left: 25%;
+		padding-bottom:50%;
+	}
+	@include breakpoint-medium-large{
+		@include size(width 40%);
+		padding-bottom: 40%;
+	}
+}
+
+.svg-content{
+	display: block;
+	@include absolute;
+}
+
+#presentation{
+	@include inline-block(middle);
+	@include size(width 100%);
+	@include breakpoint-medium-large{
+		@include size(width 60%);
+	}
+	padding: 25px;
+    font-size: 20px;
+    color:$color-text;
+    font-family: $font-texts;
+    text-align: justify;
+    a{
+    	color:$color-blue;
+    }
+}

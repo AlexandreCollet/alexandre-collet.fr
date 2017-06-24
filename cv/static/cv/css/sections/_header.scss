@@ -1,0 +1,123 @@
+/**
+ * STRUCTURE
+ */
+
+header{
+    margin-bottom: $gutter;
+    @include breakpoint-medium-large{
+        @include size(height 126px);
+    }
+}
+
+/**
+ * TITRES
+ */
+
+#hgroup{
+    @include breakpoint-tiny-small{
+        margin-bottom: $gutter;
+    }
+    @include breakpoint-medium-large{
+        float: left;
+    }
+}
+h1,h2{
+    color:$color-blue;
+    @include breakpoint-tiny-small{
+        text-align: center;
+    }
+}
+h1{
+    font-size: 75px;
+    font-family: $font-titles;
+}
+h2{
+    line-height: 44px;
+    font-size: 35px;
+    font-family: $font-texts;
+}
+
+/**
+ * MENU
+ */
+
+nav{font-size: 0;}
+nav a{
+    @include relative;
+    font-family: $font-texts;
+    font-size: 18px;
+    text-align: center;
+    color:white;
+}
+// Mode btn commun aux XS et S
+@include breakpoint-tiny-small{
+    nav a{
+        @include btn($font : $font-texts);
+        &.green{@include btn-color($color-green);}
+        &.blue{@include btn-color($color-blue);}
+        &.red{@include btn-color($color-red);}
+        &.yellow{@include btn-color($color-yellow);}
+    }
+}
+// Mode btn unique au XS
+@include breakpoint-tiny{
+    nav a{
+        display: block;
+        @include size(width 90%);
+        margin: 0 auto;
+        &:not(:last-child){
+            margin-bottom: $gutter;
+        }
+    }
+}
+// Mode btn unique au S
+@include breakpoint-small{
+    nav a{
+        @include inline-block;
+        @include size(width ((nth($breakpoints,1) - $gutter)/4 - 3/4*$gutter));
+        &:not(:last-child){
+            margin-right: $gutter;
+        }
+    }
+}
+// Mode marque page
+@include breakpoint-medium-large{
+    nav{float: right;}
+    nav a{
+        transition: transform 0.5s ease;
+        @include inline-block;
+        @include size(width 75px height 100px);
+        @include relative(top -25px);
+        line-height: 100px;
+        &:not(:last-child){
+            margin-right: $gutter;
+        }
+        &:hover{
+            transform: translate3d(0,25px,0);
+        }
+        &:after{
+            content: "";
+            display: block;
+            @include size(0);
+            border-top: 37.5px solid;
+            border-left: 37.5px solid transparent;
+            border-right: 37.5px solid transparent;
+        }
+        &.green{
+            background-color: $color-green;
+            &:after{color:$color-green}
+        }
+        &.blue{
+            background-color: $color-blue;
+            &:after{color:$color-blue}
+        }
+        &.red{
+            background-color: $color-red;
+            &:after{color:$color-red}
+        }
+        &.yellow{
+            background-color: $color-yellow;
+            &:after{color:$color-yellow}
+        }
+    }
+}

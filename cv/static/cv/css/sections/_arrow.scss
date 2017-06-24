@@ -1,0 +1,13 @@
+#up{
+    @include fixed(bottom -50px right 50px);
+    @include size(50px);
+    border-radius: 50%;
+    background-color : $color-text;
+    font-family: $font-icons;
+    font-size: 25px;
+    line-height: 50px;
+    text-align: center;
+    color:white;
+    transition: bottom 0.5s ease;
+    &.display{bottom:50px;}
+}

@@ -1,0 +1,60 @@
+/**
+ * DEFAULT VARIABLES
+ */
+
+$alert-font  : "arial" !default;
+$alert-types : (
+	"info"    : blue,
+	"success" : green,
+	"warning" : orange,
+	"error"   : red
+) !default;
+
+
+/**
+ * PUBLIC MIXINS
+ */
+
+@mixin alert($color){
+
+	display: block;
+	z-index: 9999;
+	@include fixed(right 25px);
+	padding: 25px;
+	@include size(max-width 250px);
+	border-radius: 5px;
+	@include animation(
+		$name:fadeIn,
+		$duration:1s,
+		$timingFunction:ease
+	);
+	transition: opacity 0.5s ease,top 0.5s ease;
+
+	font-family: $alert-font;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+	color:white;
+
+	background: $color;
+
+	&:hover{cursor: pointer;}
+
+}
+
+/**
+ * CLASSES DECLARATIONS
+ */
+
+@each $key, $value in $alert-types {
+    .alert_#{$key} { @include alert($value) }
+}
+
+/**
+ * KEYFRAMES
+ */
+
+@include keyframes (fadeIn){
+	from{ transform: translate3d(350px, 0, 0)}
+	to{ transform: translate3d(0, 0, 0)}
+}

@@ -1,0 +1,64 @@
+#cv{font-size: 0;}
+
+#skills > div,
+#timeline > div,
+#experiences > div,
+#voluntaries > div,
+#formations > div {
+    margin-top: $gutter;
+}
+/* _____________skills________________ */
+#skills{
+    @include inline-block(top);
+    @include size(width 40%);
+    padding:0 $gutter;
+    @include breakpoint-tiny-small{
+        @include size(width 100%);
+    }
+
+    .skills_secondary{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: $gutter;
+        margin-right: -$gutter/4;
+    }
+
+    .skill_secondary{
+        flex: 1 0 auto;
+        @include size(height 31px);
+        border-radius: 5px;
+        background-color: $color-yellow;
+        border : 3px solid $color-yellow;
+        margin-right: $gutter/4;
+        margin-bottom: $gutter/4;
+        text-align: center;
+    }
+}
+/* ___________timeline________________ */
+#timeline{
+    @include inline-block(top);
+    @include size(width 60%);
+    padding:0 $gutter;
+    @include breakpoint-tiny-small{
+        @include size(width 100%);
+    }
+    .date{
+        display: block;
+        border-bottom: 1px solid;
+        color:$color-text;
+        font-family: $font-texts;
+        font-size: 12px;
+    }
+    li{
+        margin-left: 50px;
+        font-size: 18px;
+        color:$color-text;
+        font-family: $font-texts;
+    }
+}
+/* ___________dl CV________________ */
+#downloadCV{
+    display: block;
+    margin: $gutter auto;
+    @include size(width 250px);
+}

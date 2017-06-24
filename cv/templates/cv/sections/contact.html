@@ -1,0 +1,20 @@
+<section id="contact">
+    <h3>Comment me contacter ?</h3>
+    <section id="social">
+        <h4>Sur les réseaux sociaux</h4>
+        {% for social_network in social_networks %}
+            <a href="{{ social_network.url }}" class="btn btn-red btn-icon-{{ social_network.name | lower }}" title="Se rendre sur mon profil {{ social_network.name | capfirst }}">{{ social_network.name }}</a>
+        {% endfor %}
+    </section>
+    <form id="contact_form" action="{% url 'cv:contact' %}" method="POST">
+        <h4>Par email</h4>
+        {% csrf_token %}
+        {{ contact_form.as_p }}
+        <div id="contact_form_unlocker" class="unlocker">
+            <p>Envoyer</p>
+            <div class="thumb"></div>
+        </div>
+        <input type="submit" id="contact_form_submit">
+    </form>
+</section>
+

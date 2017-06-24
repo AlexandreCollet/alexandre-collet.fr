@@ -1,0 +1,104 @@
+/**
+ * DEFAULT VARIABLES
+ */
+
+ $button-height      : 50px !default;
+ $button-color       : white !default;
+ $button-font        : "arial" !default;
+ $button-font-size   : 20px !default;
+ $button-bgColorsMap : (
+    "red"    : red,
+    "yellow" : yellow,
+    "green"  : green,
+    "blue"   : blue
+) !default;
+
+ $button-icon-font      : "" !default;
+ $button-icon-font-size : 30px !default;
+ $button-icon-padding   : 75px !default;
+ $button-icon-map : () !default;
+
+/**
+ * PUBLIC MIXINS
+ */
+
+@mixin btn($height : null, $color : null, $font : null, $font-size : null){
+
+    @if $height    { $button-height    : $height    }
+    @if $color     { $button-color     : $color     }
+    @if $font      { $button-font      : $font      }
+    @if $font-size { $button-font-size : $font-size }
+
+    @include __btn;
+
+}
+
+@mixin btn-color($color){
+
+    @include __btn-color($color);
+
+}
+
+@mixin btn-icon($icon, $padding : null, $font : null, $font-size : null){
+
+    @if $padding   { $button-icon-padding   : $padding   }
+    @if $font      { $button-icon-font      : $font      }
+    @if $font-size { $button-icon-font-size : $font-size }
+
+    @include __btn-icon($icon);
+
+}
+
+/**
+ * PRIVATE MIXINS
+ */
+
+@mixin __btn(){
+
+    @include relative;
+    @include size(height $button-height);
+    line-height: $button-height;
+    border-radius: 5px;
+    color: $button-color;
+    font-family: $button-font;
+    font-size: $button-font-size;
+    text-align: center;
+
+}
+
+@mixin __btn-color($color){
+
+    background-color: $color;
+    box-shadow: 0 4px 0 darken($color,10%);
+    &:hover{
+        top:2px;
+        background-color: darken($color,5%);
+        box-shadow: 0 2px 0 darken($color,20%);
+    }
+
+}
+
+@mixin __btn-icon($icon){
+    padding-left: $button-icon-padding;
+    text-align: left;
+    &:before{
+        content: $icon;
+        @include absolute(top 0 left 10px);
+        font-family: $button-icon-font;
+        font-size: $button-icon-font-size;
+    }
+}
+
+/**
+ * CLASSES DECLARATIONS
+ */
+
+.btn{ @include __btn; }
+
+@each $key, $value in $button-bgColorsMap {
+    .btn-#{$key} { @include __btn-color($value) }
+}
+
+@each $key, $value in $button-icon-map {
+    .btn-icon-#{$key} { @include __btn-icon($value) }
+}

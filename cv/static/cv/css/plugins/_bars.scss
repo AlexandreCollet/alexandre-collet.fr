@@ -1,0 +1,45 @@
+
+/**
+ * DEFAULT VARIABLES
+ */
+
+
+/**
+ * MIXINS
+ */
+
+@mixin bar($percent){
+    @include size(width ($percent * 1%));
+    $time : $percent * 0.02s;
+    transition: $time width linear;
+}
+
+/**
+ * CLASSES DECLARATIONS
+ */
+
+ .bar{
+     margin-top: $gutter;
+     @include size(width 100% height 31px);
+     @include relative;
+     border-radius: 5px;
+     background-color: white;
+     border : 3px solid $color-yellow;
+ }
+ .bar > div{
+     @include absolute;
+     @include size(width 0% height 100%);
+     background-color:$color-yellow;
+ }
+
+.is-displayed.bar-10 > div {@include bar(10);}
+.is-displayed.bar-20 > div {@include bar(20);}
+.is-displayed.bar-30 > div {@include bar(30);}
+.is-displayed.bar-40 > div {@include bar(40);}
+.is-displayed.bar-50 > div {@include bar(50);}
+.is-displayed.bar-60 > div {@include bar(60);}
+.is-displayed.bar-70 > div {@include bar(70);}
+.is-displayed.bar-80 > div {@include bar(80);}
+.is-displayed.bar-90 > div {@include bar(90);}
+.is-displayed.bar-100 > div {@include bar(100);}
+

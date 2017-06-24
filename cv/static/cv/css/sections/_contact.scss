@@ -1,0 +1,123 @@
+#contact{
+    font-size: 0;
+    margin-bottom : $gutter;
+}
+#social, #contact_form{
+    @include inline-block(top);
+    padding:$gutter;
+    @include breakpoint-tiny-small{
+        width:100% !important;
+    }
+}
+/**
+ * LIENS RESEAUX SOCIAUX
+ */
+
+
+#social{
+    @include size(width 40%);
+    a{
+        display: block;
+        @include size(width 250px);
+        margin: $gutter auto 0;
+    }
+}
+
+
+/**
+ * FORMULAIRE CONTACT
+ */
+
+
+#contact_form{
+    @include size(width 60%);
+    > p{margin-top: $gutter;}
+}
+label{
+    @include relative;
+    display: block;
+    padding-left:40px;
+    font-family: $font-texts;
+    line-height: 30px;
+    font-size: 18px;
+    color:$color-text;
+    &:before{
+
+        @include absolute(top 0 left 10px);
+        font-family: $font-icons;
+        font-size: 25px;
+        line-height: 30px;
+    }
+    &.isValid:before{
+        content:"v";
+        color:$color-green;
+    }
+    &:not(.isValid):before{
+        content:"x";
+        color:$color-red;
+    }
+}
+input[type=text], input[type=email], textarea{
+    @include size(width 100% height 40px);
+    color:$color-text;
+    background-color: white;
+    padding:10px;
+    border-radius: 5px;
+    font-family: $font-texts;
+    &:focus{outline-style: none;}
+}
+textarea{
+    @include size(max-width 100% height 200px);
+    resize:none;
+}
+input[type=submit]{
+    display: none;
+}
+
+/*
+ * UNLOCKER
+ */
+
+.unlocker{
+    @include relative(top $gutter left 25%);
+    @include size(width 50% height 44px);
+    @include breakpoint-tiny{
+        @include size(width 100%);
+        left: 0;
+    }
+    border:2px solid white;
+    background-color: white;
+    border-radius: 5px;
+    p{
+        @include absolute;
+        @include size(100%);
+        font-family: $font-texts;
+        font-size: 18px;
+        text-align: center;
+        line-height: 40px;
+        color:$color-red;
+    }
+    .thumb{
+        background-color: $color-red;
+        @include absolute;
+        @include size(width 25% height 100%);
+        border-radius: 5px;
+        &:hover{cursor: pointer;}
+        transition: background-color 0.2s, opacity 0.5s;
+        &:before{
+            display: block;
+            @include size(100%);
+            content:"6";
+            @include absolute;
+            line-height: 40px;
+            text-align: center;
+            font-family: $font-icons;
+            color:white;
+            font-size: 25px;
+        }
+    }
+    &.active{
+        p{color: $color-green};
+        .thumb{background-color: $color-green;}
+    }
+}

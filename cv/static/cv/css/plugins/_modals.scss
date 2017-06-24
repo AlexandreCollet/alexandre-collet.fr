@@ -1,0 +1,64 @@
+/**
+ * DEFAULT VARIABLES
+ */
+
+
+
+/**
+ * PUBLIC MIXINS
+ */
+
+/**
+ * PRIVATE MIXINS
+ */
+
+
+/**
+ * CLASSES DECLARATIONS
+ */
+
+.modal{
+	display: none;
+	@include size(100%);
+	padding : 50px;
+	background-color: $color-bg;
+}
+.modal.is-visible{
+	display: block;
+	@include fixed(top 0 left 0);
+}
+
+.modal-title h3{
+	text-align: center;
+	color: $color-green;
+	@include size(width 50%);
+	margin: 0 auto;
+}
+
+.modal-content{
+	@include inline-block("middle");
+	@include size(width 50%);
+	//border : 1px solid red;
+}
+
+.modal-content p {
+	text-align: justify;
+	color: $color-text;
+	font-family: $font-texts;
+}
+
+.modal-slider{
+	@include inline-block("middle");
+	@include size(width 50%);
+	//border : 1px solid green;
+}
+
+.modal-close{
+	@include absolute(top 0 right 0);
+	@include size(50px);
+	font-family: $font-icons;
+	font-size: 50px;
+	text-align: center;
+	line-height: 50px;
+	color: $color-text;
+}

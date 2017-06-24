@@ -1,0 +1,48 @@
+<section id="cv">
+    <h3>Quel est mon parcours ?</h3>
+
+    <section id="skills">
+        <div>
+            <h4>Compétences</h4>
+            {% for skill_main in skills.mains %}
+                <div class="skill_primary bar bar-{{ skill_main.level }}">
+                    <div>
+                        <h5>{{ skill_main.name }}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="skills_secondary">
+                {% for skill_other in skills.others %}
+                    <div class="skill_secondary">
+                        <h5>{{ skill_other.name }}</h5>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline">
+        <div id="experiences">
+            <h4>Expériences professionnelles</h4>
+            {% for experience_job in experiences.job %}
+                {% include "cv/macros/experience.html" with experience=experience_job %}
+            {% endfor %}
+        </div>
+        <div id="voluntaries">
+            <h4>Bénévolat</h4>
+            {% for experience_volunteering in experiences.volunteering %}
+                {% include "cv/macros/experience.html" with experience=experience_volunteering %}
+            {% endfor %}
+        </div>
+        <div id="formations">
+            <h4>Formations / Diplômes</h4>
+            {% for experience_education in experiences.education %}
+                {% include "cv/macros/experience.html" with experience=experience_education %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <div>
+        <a href="/static/cv/doc/Alexandre-COLLET-CV.pdf" id="downloadCV" class="btn btn-yellow btn-icon-download" title="Télécharger mon Curriculum Vitae">Télécharger mon CV</a>
+    </div>
+</section>

@@ -1,0 +1,13 @@
+<div>
+    {% if not experience.date_stop %}
+        <p class="date">Depuis le <time datetime="{{ experience.date_start | date:'c'}}">{{ experience.date_start | date:'SHORT_DATE_FORMAT'}}</time></p>
+    {% else %}
+        <p class="date">Du <time datetime="{{ experience.date_start | date:'c'}}">{{ experience.date_start | date:'SHORT_DATE_FORMAT'}}</time> au <time datetime="{{ experience.date_stop | date:'c'}}">{{ experience.date_stop | date:'SHORT_DATE_FORMAT'}}</time></p>
+    {% endif %}
+    <h5>{{ experience.name }}</h5>
+    <ul>
+        {% for activity in experience.activities.all %}
+            <li>{{ activity.description }}</li>
+        {% endfor %}
+    </ul>
+</div>
