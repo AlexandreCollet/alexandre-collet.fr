@@ -1,3 +1,5 @@
+SECRET_KEY = 'dw0ibt6v3_!x1=*)54e(%pb-$p3eyd#7em09^3ayw!dh=fisod'
+
 DEBUG = True
 ALLOWED_HOSTS = ['alexandre-collet.dev']
 
@@ -15,3 +17,4 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATIC_ROOT = "/code/static/"
+
