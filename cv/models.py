@@ -68,3 +68,7 @@ class ExperienceActivity(Model):
 class SocialNetwork(Model):
     name = CharField(max_length=50, unique=True)
     url = URLField()
+
+    def __str__(self):
+        return self.name
+
