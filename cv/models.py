@@ -51,20 +51,20 @@ class Experience(Model):
         return self.name
 
 
-class ExperienceActivity(Model):
+class ExperienceActivity(OrderedModel):
     experience = ForeignKey(
         'Experience',
         related_name='activities', on_delete=CASCADE
     )
     description = TextField()
-    order = PositiveSmallIntegerField()
 
     def __str__(self):
         return self.experience.name + ': ' + self.description[:10]
 
-    class Meta:
+    class Meta(OrderedModel.Meta):
         unique_together = ('experience', 'order')
-        ordering = ['order']
+        ordering = ('experience', 'order')
+        verbose_name_plural = 'Experience Activities'
 
 
 class SocialNetwork(OrderedModel):
