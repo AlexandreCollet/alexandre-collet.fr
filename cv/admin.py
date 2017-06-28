@@ -8,6 +8,11 @@ from .models import (
 )
 
 
+class ProjectAdmin(OrderedModelAdmin):
+    list_display = ('move_up_down_links', '__str__', 'name', 'url')
+    list_display_links = ('__str__', )
+
+
 class SkillAdmin(OrderedModelAdmin):
     list_display = ('move_up_down_links', '__str__', 'name', 'level', 'main')
     list_display_links = ('__str__', )
@@ -34,7 +39,7 @@ class SocialNetworkAdmin(OrderedModelAdmin):
     list_display_links = ('__str__', )
 
 
-admin.site.register(Project)
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(ExperienceActivity, ExperienceActivityAdmin)

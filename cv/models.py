@@ -9,12 +9,15 @@ from django.db.models.deletion import CASCADE
 from ordered_model.models import OrderedModel
 
 
-class Project(Model):
+class Project(OrderedModel):
     name = CharField(max_length=50, unique=True)
     url = URLField()
 
     def __str__(self):
         return self.name
+
+    class Meta(OrderedModel.Meta):
+        pass
 
 
 class Skill(OrderedModel):
