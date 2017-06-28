@@ -17,18 +17,17 @@ class Project(Model):
         return self.name
 
 
-class Skill(Model):
+class Skill(OrderedModel):
     name = CharField(max_length=50, unique=True)
     level = PositiveSmallIntegerField()
-    order = PositiveSmallIntegerField()
     main = BooleanField(default=True)
 
     def __str__(self):
         return self.name
 
-    class Meta:
+    class Meta(OrderedModel.Meta):
         unique_together = ('main', 'order')
-        ordering = ['main', 'order', 'level']
+        ordering = ('main', 'order', 'level')
 
 
 class Experience(Model):
