@@ -1,10 +1,16 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 
 from ordered_model.admin import OrderedModelAdmin
 
 from .models import (
     Project, Experience, ExperienceActivity, Skill, SocialNetwork
 )
+
+
+class ExperienceAdmin(ModelAdmin):
+    list_display = ('__str__', 'category', 'name')
+    list_display_links = ('__str__', )
 
 
 class ExperienceActivityAdmin(OrderedModelAdmin):
@@ -25,6 +31,6 @@ class SocialNetworkAdmin(OrderedModelAdmin):
 
 admin.site.register(Project)
 admin.site.register(Skill)
-admin.site.register(Experience)
+admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(ExperienceActivity, ExperienceActivityAdmin)
 admin.site.register(SocialNetwork, SocialNetworkAdmin)
