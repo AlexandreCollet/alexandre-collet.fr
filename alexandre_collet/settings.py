@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'jet',
     'compressor',
     'sass_processor',
+    'ordered_model',
 
     'django.contrib.admin',
     'django.contrib.auth',

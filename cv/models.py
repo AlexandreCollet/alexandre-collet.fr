@@ -6,6 +6,8 @@ from django.db.models.fields import (
 from django.db.models.fields.related import ForeignKey
 from django.db.models.deletion import CASCADE
 
+from ordered_model.models import OrderedModel
+
 
 class Project(Model):
     name = CharField(max_length=50, unique=True)
@@ -65,10 +67,13 @@ class ExperienceActivity(Model):
         ordering = ['order']
 
 
-class SocialNetwork(Model):
+class SocialNetwork(OrderedModel):
     name = CharField(max_length=50, unique=True)
     url = URLField()
 
     def __str__(self):
         return self.name
+
+    class Meta(OrderedModel.Meta):
+        pass
 
