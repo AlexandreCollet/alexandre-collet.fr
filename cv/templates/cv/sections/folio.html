@@ -2,7 +2,7 @@
     <h3>Quelles sont mes réalisations ?</h3>
     <section id="realisations">
         <h4>Projets réalisés</h4>
-        <div>
+        <div class="realisations_container">
             {% for project in projects %}
                 <a href="{{ project.url }}" class="realisation">
                     <h4>{{ project.name }}</h4>
@@ -18,3 +18,4 @@
         <a href="https://github.com/AlexandreCollet" id="linkGithub" class="btn btn-green btn-icon-github" title="Se rendre sur mon profil Github">Voir mon profil Github</a>
     </section>
 </section>
+
