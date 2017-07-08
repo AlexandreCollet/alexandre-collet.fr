@@ -14,6 +14,8 @@ DATABASES = {
     }
 }
 
+LANGUAGE_CODE = 'fr'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATIC_ROOT = "/code/static/"
