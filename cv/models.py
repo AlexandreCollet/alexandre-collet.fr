@@ -52,6 +52,9 @@ class Experience(Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ('-date_start', )
+
 
 class ExperienceActivity(OrderedModel):
     experience = ForeignKey(
