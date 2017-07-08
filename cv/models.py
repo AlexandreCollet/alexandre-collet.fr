@@ -47,7 +47,7 @@ class Experience(Model):
     name = CharField(max_length=50, unique=True)
     category = IntegerField(default=CATEGORY_JOB, choices=CATEGORY_CHOICES)
     date_start = DateField()
-    date_stop = DateField()
+    date_stop = DateField(blank=True, null=True)
 
     def __str__(self):
         return self.name
