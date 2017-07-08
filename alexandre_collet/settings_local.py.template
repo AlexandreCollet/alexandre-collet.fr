@@ -18,5 +18,6 @@ LANGUAGE_CODE = 'fr'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-STATIC_ROOT = "/code/static/"
+EMAIL_RECIPIENT = 'alexandre@collet.email'
 
+STATIC_ROOT = "/code/static/"

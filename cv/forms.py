@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.forms import Form
 from django.forms import CharField, EmailField
 from django.forms import Textarea
@@ -17,7 +18,7 @@ class ContactForm(Form):
         )
         message = self.cleaned_data['message']
         from_email = self.cleaned_data['email']
-        recipient_list = ['alexandre@collet.email']
+        recipient_list = [settings.EMAIL_RECIPIENT]
 
         try:
             send_mail(
