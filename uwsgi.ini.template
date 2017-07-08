@@ -1,0 +1,14 @@
+[uwsgi]
+
+chdir=/code
+module=alexandre_collet.wsgi:application
+
+master=True
+processes = 10
+harakiri = 20
+max-requests = 1000
+
+http = 0.0.0.0:8000
+vacuum = true
+
+pidfile=/tmp/alexandre_collet_wsgi.pid
