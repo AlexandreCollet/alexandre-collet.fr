@@ -29,7 +29,6 @@ class Skill(OrderedModel):
         return self.name
 
     class Meta(OrderedModel.Meta):
-        unique_together = ('main', 'order')
         ordering = ('main', 'order', 'level')
 
 
@@ -67,7 +66,6 @@ class ExperienceActivity(OrderedModel):
         return self.experience.name + ': ' + self.description[:10]
 
     class Meta(OrderedModel.Meta):
-        unique_together = ('experience', 'order')
         ordering = ('experience', 'order')
         verbose_name_plural = 'Experience Activities'
 
