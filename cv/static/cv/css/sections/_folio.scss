@@ -33,10 +33,10 @@
         @include size(width (((nth($breakpoints,3)- $gutter)*0.6 - $gutter*3)/2));
     }
     &:nth-child(odd){margin-right: $gutter;}
-    line-height: 150px;
     background-color: $color-green;
     border-radius: 5px;
     > h4{
+        line-height: 150px;
         text-align: center;
         font-size: 45px;
         color : white !important;
@@ -44,6 +44,8 @@
         border-radius: 5px;
     }
     &.offline{ opacity:0.5;}
+    &:hover{cursor: pointer;}
+    &:focus{outline: none;}
 }
 
 .repository{
