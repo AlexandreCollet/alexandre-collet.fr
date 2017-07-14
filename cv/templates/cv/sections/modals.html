@@ -1,0 +1,14 @@
+{% for project in projects %}
+    <div class="md-modal md-green" id="md-project-{{ project.slug }}">
+        <div class="md-header">
+            <button type=button class="md-close">&#x78;</button>
+            <h4>{{ project.name }}</h4>
+        </div>
+        <div class="md-content">
+            <p>{{ project.slug }}</p>
+        </div>
+    </div>
+{% endfor %}
+
+
+<div id="md-overlay"></div>
