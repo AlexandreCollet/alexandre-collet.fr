@@ -2,10 +2,10 @@
  * DEFAULT VARIABLES
  */
 
-$modal-height: 95vh !default;
-$modal-width: 95vw !default;
-$modal-position-top: (100vh - $modal-height) / 2 !default;
-$modal-position-left: (100vw - $modal-width) / 2 !default;
+$modal-height: 95% !default;
+$modal-width: 95% !default;
+$modal-position-top: (100% - $modal-height) / 2 !default;
+$modal-position-left: (100% - $modal-width) / 2 !default;
 $modal-position-z: 1001 !default;
 $modal-background-color: white !default;
 $modal-color-map: (
@@ -14,6 +14,7 @@ $modal-color-map: (
     "green"  : green,
     "blue"   : blue
 ) !default;
+$modal-border-radius: 0 !default;
 $modal-transition-duration: 0.3s !default;
 $modal-transition-scale-from: 0.7 !default;
 
@@ -64,7 +65,7 @@ $overlay-position-z: 1000 !default;
 	opacity: 0;
     transition: all $modal-transition-duration;
     transform: scale($modal-transition-scale-from);
-    border-radius: 5px;
+    border-radius: $modal-border-radius;
 	&.md-show {
 		transform: scale(1);
 		opacity: 1;
@@ -78,15 +79,15 @@ $overlay-position-z: 1000 !default;
 
 .md-header {
 	@include size(width 100% height $modal-header-height);
-	border-radius: 5px 5px 0 0;
+	border-radius: $modal-border-radius $modal-border-radius 0 0;
 
-	> h4 {
+	> h5 {
 		line-height: $modal-header-height;
         text-align: center;
         font-size: $modal-header-title-size;
         color: white !important;
         border-bottom-width: 0px;
-        border-radius: 5px;
+        border-radius: $modal-border-radius;
 	}
 
 	button.md-close {
