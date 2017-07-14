@@ -69,6 +69,21 @@ $button-icon-map : (
 );
 
 /**
+ * MODALS PLUGIN
+ */
+
+$modal-height: 90vh;
+$modal-width: 90vw;
+$modal-background-color: $color-bg;
+$modal-color-map: $sectionsColors;
+$modal-header-title-size: 45px;
+$modal-content-gutter-size: $gutter;
+$modal-close-font-size: 25px;
+$modal-close-font-family: $font-icons;
+$modal-close-gutter-size: 10px;
+$overlay-background-color: rgba($color-text, 0.9);
+
+/**
  * ALERTS PLUGIN
  */
 
