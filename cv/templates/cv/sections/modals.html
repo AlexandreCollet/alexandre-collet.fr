@@ -1,11 +1,23 @@
 {% for project in projects %}
-    <div class="md-modal md-green" id="md-project-{{ project.slug }}">
+    <div class="md-modal md-green md-project" id="md-project-{{ project.slug }}">
         <div class="md-header">
             <button type=button class="md-close">&#x78;</button>
             <h5>{{ project.name }}</h5>
         </div>
         <div class="md-content">
-            <p>{{ project.slug }}</p>
+            <div class="container">
+                <div class="links">
+                    {% for link in project.links.all %}
+                        <a href="{{ link.url }}" class='link btn btn-green {% if link.icon%} btn-icon-{{ link.icon }} {% endif %}'>{{ link.name }}</a>
+                    {% endfor %}
+                </div>
+                <p class="description">{{ project.description|linebreaksbr }}</p>
+                <div class="technologies">
+                    {% for technology in project.technologies.all %}
+                        <p class="technology"><em>{{ technology.name }}</em></p>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 {% endfor %}
