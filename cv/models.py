@@ -13,7 +13,6 @@ from ordered_model.models import OrderedModel
 class Project(OrderedModel):
     name = CharField(max_length=50, unique=True)
     description = TextField(blank=True)
-    url = URLField()
 
     @property
     def slug(self):
@@ -24,6 +23,40 @@ class Project(OrderedModel):
 
     class Meta(OrderedModel.Meta):
         pass
+
+
+class ProjectLink(OrderedModel):
+    project = ForeignKey(
+        'Project',
+        related_name='links', on_delete=CASCADE
+    )
+    name = CharField(max_length=50)
+    url = URLField(unique=True)
+    icon = CharField(max_length=10, blank=True)
+
+    def __str__(self):
+        return self.project.name + ' - ' + self.name
+
+    class Meta(OrderedModel.Meta):
+        unique_together = ('project', 'name')
+        ordering = ('project', 'order')
+        verbose_name_plural = 'Project Links'
+
+
+class ProjectTechnology(OrderedModel):
+    project = ForeignKey(
+        'Project',
+        related_name='technologies', on_delete=CASCADE
+    )
+    name = CharField(max_length=50)
+
+    def __str__(self):
+        return self.project.name + ' - ' + self.name
+
+    class Meta(OrderedModel.Meta):
+        unique_together = ('project', 'name')
+        ordering = ('project', 'order')
+        verbose_name_plural = 'Project Technologies'
 
 
 class Skill(OrderedModel):
