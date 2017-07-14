@@ -12,6 +12,7 @@ from ordered_model.models import OrderedModel
 
 class Project(OrderedModel):
     name = CharField(max_length=50, unique=True)
+    description = TextField(blank=True)
     url = URLField()
 
     @property
