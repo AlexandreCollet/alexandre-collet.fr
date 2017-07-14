@@ -5,6 +5,7 @@ from django.db.models.fields import (
 )
 from django.db.models.fields.related import ForeignKey
 from django.db.models.deletion import CASCADE
+from django.utils.text import slugify
 
 from ordered_model.models import OrderedModel
 
@@ -12,6 +13,10 @@ from ordered_model.models import OrderedModel
 class Project(OrderedModel):
     name = CharField(max_length=50, unique=True)
     url = URLField()
+
+    @property
+    def slug(self):
+        return slugify(self.name)
 
     def __str__(self):
         return self.name
