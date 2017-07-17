@@ -17,10 +17,17 @@
                         <p class="technology"><em>{{ technology.name }}</em></p>
                     {% endfor %}
                 </div>
+                <div class="screenshots">
+                    {% for screenshot in project.screenshots.all %}
+                    <div class="screenshot">
+                        <img src="{{ screenshot.image.url }}" alt="{{ screenshot.name }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <div style="clear:both;"></div>
             </div>
         </div>
     </div>
 {% endfor %}
-
 
 <div id="md-overlay"></div>

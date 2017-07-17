@@ -113,5 +113,30 @@
             color:white;
             padding: 0 $gutter;
         }
+
+
+    }
+}
+
+
+.screenshots {
+    font-size: 0;
+    column-count: 1;
+    @include breakpoint-small{
+        column-count: 2;
+    }
+    @include breakpoint-medium{
+        column-count: 2;
+    }
+    @include breakpoint-large{
+        column-count: 3;
+    }
+}
+.screenshot {
+    img {
+        max-width: 100%;
+    }
+    &:first-child {
+        column-span: all;
     }
 }
