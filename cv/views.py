@@ -19,7 +19,7 @@ class IndexView(TemplateView):
         context = {}
 
         context['projects'] = Project.objects.all().prefetch_related(
-            'technologies', 'links'
+            'technologies', 'links', 'screenshots'
         )
         context['social_networks'] = SocialNetwork.objects.all()
         context['skills'] = {

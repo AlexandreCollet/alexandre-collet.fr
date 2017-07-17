@@ -1,11 +1,16 @@
+import os
+from uuid import uuid4
+
 from django.db.models import Model
 from django.db.models.fields import (
     BooleanField, DateField, CharField, URLField, TextField, IntegerField,
     PositiveSmallIntegerField
 )
+from django.db.models.fields.files import ImageField
 from django.db.models.fields.related import ForeignKey
 from django.db.models.deletion import CASCADE
 from django.utils.text import slugify
+from django.utils.deconstruct import deconstructible
 
 from ordered_model.models import OrderedModel
 
@@ -57,6 +62,35 @@ class ProjectTechnology(OrderedModel):
         unique_together = ('project', 'name')
         ordering = ('project', 'order')
         verbose_name_plural = 'Project Technologies'
+
+
+@deconstructible
+class UploadToPathAndRename(object):
+    def __init__(self, path):
+        self.sub_path = path
+
+    def __call__(self, instance, filename):
+        ext = filename.split('.')[-1]
+        uuid = uuid4().hex
+        filename = '{}.{}'.format(uuid, ext)
+        return os.path.join(self.sub_path, filename)
+
+
+class ProjectScreenshot(OrderedModel):
+    project = ForeignKey(
+        'Project',
+        related_name='screenshots', on_delete=CASCADE
+    )
+    name = CharField(max_length=255)
+    image = ImageField(upload_to=UploadToPathAndRename('projects/screenshots'))
+
+    def __str__(self):
+        return self.project.name + ' - ' + self.name
+
+    class Meta(OrderedModel.Meta):
+        unique_together = ('project', 'name')
+        ordering = ('project', 'order')
+        verbose_name_plural = 'Project Screenshots'
 
 
 class Skill(OrderedModel):
