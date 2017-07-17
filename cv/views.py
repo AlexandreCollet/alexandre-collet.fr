@@ -18,7 +18,9 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = {}
 
-        context['projects'] = Project.objects.all()
+        context['projects'] = Project.objects.all().prefetch_related(
+            'technologies', 'links', 'screenshots'
+        )
         context['social_networks'] = SocialNetwork.objects.all()
         context['skills'] = {
             'mains': Skill.objects.filter(main=True).all(),

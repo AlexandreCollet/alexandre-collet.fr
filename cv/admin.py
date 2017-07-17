@@ -4,13 +4,47 @@ from django.contrib.admin import ModelAdmin
 from ordered_model.admin import OrderedModelAdmin
 
 from .models import (
-    Project, Experience, ExperienceActivity, Skill, SocialNetwork
+    Project, ProjectLink, ProjectTechnology, ProjectScreenshot,
+    Experience, ExperienceActivity, Skill, SocialNetwork
 )
 
 
 class ProjectAdmin(OrderedModelAdmin):
-    list_display = ('move_up_down_links', '__str__', 'name', 'url')
+    list_display = ('move_up_down_links', '__str__', 'name')
     list_display_links = ('__str__', )
+
+
+class ProjectLinkAdmin(OrderedModelAdmin):
+    list_display = (
+        'move_up_down_links', '__str__', 'project_name', 'name'
+    )
+    list_display_links = ('__str__', )
+
+    def project_name(self, obj):
+        return obj.project.name
+    project_name.short_description = 'Project'
+
+
+class ProjectTechnologyAdmin(OrderedModelAdmin):
+    list_display = (
+        'move_up_down_links', '__str__', 'project_name', 'name'
+    )
+    list_display_links = ('__str__', )
+
+    def project_name(self, obj):
+        return obj.project.name
+    project_name.short_description = 'Project'
+
+
+class ProjectScreenshotAdmin(OrderedModelAdmin):
+    list_display = (
+        'move_up_down_links', '__str__', 'project_name', 'name'
+    )
+    list_display_links = ('__str__', )
+
+    def project_name(self, obj):
+        return obj.project.name
+    project_name.short_description = 'Project'
 
 
 class SkillAdmin(OrderedModelAdmin):
@@ -40,6 +74,9 @@ class SocialNetworkAdmin(OrderedModelAdmin):
 
 
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(ProjectLink, ProjectLinkAdmin)
+admin.site.register(ProjectTechnology, ProjectTechnologyAdmin)
+admin.site.register(ProjectScreenshot, ProjectScreenshotAdmin)
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(ExperienceActivity, ExperienceActivityAdmin)

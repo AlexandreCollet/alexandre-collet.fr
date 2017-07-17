@@ -1,0 +1,33 @@
+{% for project in projects %}
+    <div class="md-modal md-green md-project" id="md-project-{{ project.slug }}">
+        <div class="md-header">
+            <button type=button class="md-close">&#x78;</button>
+            <h5>{{ project.name }}</h5>
+        </div>
+        <div class="md-content">
+            <div class="container">
+                <div class="links">
+                    {% for link in project.links.all %}
+                        <a href="{{ link.url }}" class='link btn btn-green {% if link.icon%} btn-icon-{{ link.icon }} {% endif %}'>{{ link.name }}</a>
+                    {% endfor %}
+                </div>
+                <p class="description">{{ project.description|linebreaksbr }}</p>
+                <div class="technologies">
+                    {% for technology in project.technologies.all %}
+                        <p class="technology"><em>{{ technology.name }}</em></p>
+                    {% endfor %}
+                </div>
+                <div class="screenshots">
+                    {% for screenshot in project.screenshots.all %}
+                    <div class="screenshot">
+                        <img src="{{ screenshot.image.url }}" alt="{{ screenshot.name }}">
+                    </div>
+                    {% endfor %}
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+<div id="md-overlay"></div>

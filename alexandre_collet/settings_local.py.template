@@ -22,3 +22,5 @@ EMAIL_SENDER = 'alexandre@collet.email'
 EMAIL_RECIPIENT = 'alexandre@collet.email'
 
 STATIC_ROOT = "/code/static/"
+
+MEDIA_ROOT = "/code/media/"

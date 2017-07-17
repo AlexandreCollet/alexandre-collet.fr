@@ -216,17 +216,35 @@
     });
 
     /**
-     * CLICK SUR REALISATION OFFLINE
+     * REALISATION MODALS
      */
 
-    var offlineRealisations = document.querySelectorAll('.realisation.offline');
-    var offlineCallback = function(event){
-        event.preventDefault();
-        alert('Cette réalisation est en cours de mise en ligne');
-    };
-    for(var j=0, le=offlineRealisations.length; j<le; j++){
-        offlineRealisations[j].onclick = offlineCallback;
+    var realisation_buttons = document.querySelectorAll('.realisation');
+    for(var j=0, le=realisation_buttons.length; j<le; j++){
+        realisation_buttons[j].onclick = function(event){
+            showModal(this.dataset.target);
+        };
     }
 
+    var close_modal_buttons = document.querySelectorAll('.md-close');
+    for(var j=0, le=close_modal_buttons.length; j<le; j++){
+        close_modal_buttons[j].onclick = function(event){
+            hideModal();
+        };
+    }
+
+    var overlay_div = document.getElementById("md-overlay");
+    overlay_div.onclick = function (event) {
+        hideModal();
+    }
+
+    function showModal(target){
+        var modal = document.getElementById(target);
+        modal.toggleClass('md-show');
+    };
+    function hideModal(){
+        var modal = document.querySelector('.md-modal.md-show');
+        modal.removeClass('md-show');
+    }
 
 })(window, document);
