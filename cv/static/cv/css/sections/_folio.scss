@@ -122,6 +122,7 @@
 .screenshots {
     font-size: 0;
     column-count: 1;
+    column-gap: $gutter;
     @include breakpoint-small{
         column-count: 2;
     }
@@ -133,7 +134,9 @@
     }
 }
 .screenshot {
+    margin-bottom: $gutter;
     img {
+        width: 100%;
         max-width: 100%;
     }
     &:first-child {

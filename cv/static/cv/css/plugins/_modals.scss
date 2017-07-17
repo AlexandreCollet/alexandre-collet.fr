@@ -110,7 +110,7 @@ $overlay-position-z: 1000 !default;
 	box-sizing: border-box;
 	width: 100%;
 	height: calc(100% - #{$modal-header-height});
-	padding: $modal-content-gutter-size;
+	padding: $modal-content-gutter-size 0;
 	overflow: auto;
 }
 
