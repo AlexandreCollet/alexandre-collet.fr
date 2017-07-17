@@ -6,6 +6,10 @@ body.noSelect{
     user-select: none;
 }
 
+body.noScroll {
+    overflow: hidden;
+}
+
 .container{
     margin: 0 auto;
     width: 100%;

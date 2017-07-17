@@ -219,6 +219,8 @@
      * REALISATION MODALS
      */
 
+    var body = document.getElementsByTagName('body')[0];
+
     var realisation_buttons = document.querySelectorAll('.realisation');
     for(var j=0, le=realisation_buttons.length; j<le; j++){
         realisation_buttons[j].onclick = function(event){
@@ -240,11 +242,13 @@
 
     function showModal(target){
         var modal = document.getElementById(target);
-        modal.toggleClass('md-show');
+        modal.addClass('md-show');
+        body.addClass('noScroll');
     };
     function hideModal(){
         var modal = document.querySelector('.md-modal.md-show');
         modal.removeClass('md-show');
+        body.removeClass('noScroll');
     }
 
 })(window, document);
