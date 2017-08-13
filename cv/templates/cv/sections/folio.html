@@ -13,7 +13,22 @@
     --><section id="github">
         <h4>Dépôts Github</h4>
         <div id="repositories">
-            <div class="loader"></div>
+            {% for repository in repositories %}
+                <div class="repository">
+                    <p class="summary">
+                        <em class="stars"><mark>s</mark>{{ repository.stargazers_count }}</em>
+                        <em class="forks"><mark>y</mark>{{ repository.forks_count }}</em>
+                        {% if repository.language %}
+                            <em class="language">{{ repository.language }}</em>
+                        {% endif %}
+                    </p>
+                    <h5>
+                        {% if repository.fork %}<mark>y</mark>{% endif %}
+                        <a title="{{ repository.name }}" href="{{ repository.html_url }}">{{ repository.name }}</a>
+                    </h5>
+                    <p class="description">{{ repository.description|default_if_none:"" }}</p>
+                </div>
+            {% endfor %}
         </div>
         <a href="https://github.com/AlexandreCollet" id="linkGithub" class="btn btn-green btn-icon-github" title="Se rendre sur mon profil Github">Voir mon profil Github</a>
     </section>

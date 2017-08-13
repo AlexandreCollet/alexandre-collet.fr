@@ -8,3 +8,4 @@ django-sass-processor==0.5.4
 libsass==0.12.3
 pillow==4.2.1
 psycopg2==2.7.1
+PyGithub==1.35

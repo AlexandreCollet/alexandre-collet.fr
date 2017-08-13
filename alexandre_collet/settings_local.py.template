@@ -24,3 +24,5 @@ EMAIL_RECIPIENT = 'alexandre@collet.email'
 STATIC_ROOT = "/code/static/"
 
 MEDIA_ROOT = "/code/media/"
+
+GITHUB_TOKEN = 'my_token'

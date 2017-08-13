@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
 from django.views.decorators.csrf import requires_csrf_token
@@ -6,6 +7,8 @@ from django.http import (
     HttpResponseBadRequest, HttpResponseForbidden, HttpResponseNotFound,
     HttpResponseServerError, JsonResponse
 )
+
+from github import Github
 
 from .models import Skill, Experience, Project, SocialNetwork
 from .forms import ContactForm
@@ -16,8 +19,10 @@ class IndexView(TemplateView):
     template_name = 'cv/index.html'
 
     def get_context_data(self, **kwargs):
-        context = {}
+        github_client = Github(settings.GITHUB_TOKEN)
 
+        context = {}
+        context['repositories'] = github_client.get_user().get_repos()
         context['projects'] = Project.objects.all().prefetch_related(
             'technologies', 'links', 'screenshots'
         )
@@ -34,7 +39,6 @@ class IndexView(TemplateView):
             'education': Experience.objects.filter(
                 category=Experience.CATEGORY_EDUCATION).all(),
         }
-
         context['contact_form'] = ContactForm(
             auto_id='contact_form_%s_field', label_suffix=''
         )
