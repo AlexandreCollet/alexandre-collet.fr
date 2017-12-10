@@ -4,6 +4,7 @@
 
 $modal-height: 95% !default;
 $modal-width: 95% !default;
+$modal-padding: 5px !default;
 $modal-position-top: (100% - $modal-height) / 2 !default;
 $modal-position-left: (100% - $modal-width) / 2 !default;
 $modal-position-z: 1001 !default;
@@ -46,9 +47,13 @@ $overlay-position-z: 1000 !default;
  */
 
  @mixin __modal-color($color) {
- 	.md-header {
- 		background-color: $color;
+ 	.md-header h5{
+ 		color: $color;
+        border-bottom-color: $color;
  	}
+    .md-close {
+        color: $color;
+    }
  }
 
 
@@ -61,16 +66,21 @@ $overlay-position-z: 1000 !default;
 	@include size(width $modal-width height $modal-height);
 	z-index: $modal-position-z;
 	background-color: $modal-background-color;
-	visibility: hidden;
-	opacity: 0;
-    transition: transform $modal-transition-duration, opacity $modal-transition-duration;
-    transform: scale($modal-transition-scale-from);
+    padding: $modal-padding;
+    overflow-y: auto;
     border-radius: $modal-border-radius;
-	&.md-show {
-		transform: scale(1);
-		opacity: 1;
-		visibility: visible;
-	}
+    transition: transform $modal-transition-duration,
+                opacity $modal-transition-duration,
+                visibility $modal-transition-duration;
+    transform: scale($modal-transition-scale-from);
+    opacity: 0;
+    visibility: hidden;
+    &.md-show {
+        visibility: visible;
+        transform: scale(1);
+        opacity: 1;
+    }
+
 }
 
 @each $key, $value in $modal-color-map {
@@ -78,42 +88,38 @@ $overlay-position-z: 1000 !default;
 }
 
 .md-header {
-	@include size(width 100% height $modal-header-height);
+    @include relative();
+	@include size(width 100%);
 	border-radius: $modal-border-radius $modal-border-radius 0 0;
 
 	> h5 {
-		line-height: $modal-header-height;
-        text-align: center;
         font-size: $modal-header-title-size;
-        color: white !important;
-        border-bottom-width: 0px;
-        border-radius: $modal-border-radius;
-	}
-
-	button.md-close {
-		@include absolute(top $modal-close-gutter-size right $modal-close-gutter-size);
-		color: white;
-		font-size: $modal-close-font-size;
-		line-height: $modal-close-font-size;
-		font-family: $modal-close-font-family;
-	    transition: transform $modal-transition-duration;
-		transform: rotateZ(0);
-		&:focus { outline: none;}
-		&:hover {
-			cursor: pointer;
-			transform: rotateZ(90deg);
-		}
+        border-bottom: 8px solid;
 	}
 }
+
 
 .md-content {
-	box-sizing: border-box;
-	width: 100%;
-	height: calc(100% - #{$modal-header-height});
-	padding: $modal-content-gutter-size 0;
-	overflow: auto;
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - #{$modal-header-height});
+    padding: $modal-content-gutter-size 0;
 }
 
+
+.md-close {
+	@include absolute(top $modal-close-gutter-size right $modal-close-gutter-size);
+	font-size: $modal-close-font-size;
+	line-height: $modal-close-font-size;
+	font-family: $modal-close-font-family;
+    transition: transform $modal-transition-duration;
+	transform: rotateZ(0);
+	&:focus { outline: none;}
+	&:hover {
+		cursor: pointer;
+		transform: rotateZ(90deg);
+	}
+}
 
 #md-overlay {
     @include fixed(top 0 left 0);
