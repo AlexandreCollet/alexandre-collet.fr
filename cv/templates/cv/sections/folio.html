@@ -4,9 +4,8 @@
         <h4>Projets réalisés</h4>
         <div class="realisations_container">
             {% for project in projects %}
-                <button type="button" class="realisation" data-target="md-project-{{ project.slug }}">
+                <button type="button" class="realisation">
                     <h5>{{ project.name }}</h5>
-                </button>
             {% endfor %}
         </div>
     </section><!--

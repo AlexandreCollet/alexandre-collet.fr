@@ -152,17 +152,8 @@
     });
 
     /**
-     * REALISATION MODALS
+     * MODALS
      */
-
-    var body = document.getElementsByTagName('body')[0];
-
-    var realisation_buttons = document.querySelectorAll('.realisation');
-    for(var j=0, le=realisation_buttons.length; j<le; j++){
-        realisation_buttons[j].onclick = function(event){
-            showModal(this.dataset.target);
-        };
-    }
 
     var close_modal_buttons = document.querySelectorAll('.md-close');
     for(var j=0, le=close_modal_buttons.length; j<le; j++){
