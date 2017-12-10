@@ -4,8 +4,14 @@
         <h4>Projets réalisés</h4>
         <div class="realisations_container">
             {% for project in projects %}
-                <button type="button" class="realisation">
+                <div class="realisation">
                     <h5>{{ project.name }}</h5>
+                    <div class="links">
+                        {% for link in project.links.all %}
+                            <a href="{{ link.url }}" class='link'>{{ link.icon }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </section><!--
