@@ -1,4 +1,9 @@
 (function (windows, document, undefined){
+    // Preload
+
+    var body = document.getElementsByTagName('body')[0];
+    body.removeClass('preload');
+
     /**
      * SKILLS BAR
      */
@@ -117,7 +122,6 @@
      * ARROW UP
      */
 
-    //Fonctions
     var displayArrowUp = function(){
 
         var arrowUp_div    = document.getElementById('up');
@@ -132,10 +136,10 @@
             arrowUp_div.removeClass('display');
         }
     };
-    //Evenements
-    document.addEventListener('scroll',displayArrowUp);
-    window.addEventListener('resize',displayArrowUp);
-    // S'éxécute au lancement
+
+    document.addEventListener('scroll', displayArrowUp);
+    window.addEventListener('resize', displayArrowUp);
+
     displayArrowUp();
 
     /**

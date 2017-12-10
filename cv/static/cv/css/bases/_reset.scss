@@ -11,3 +11,10 @@
 :-moz-ui-invalid {
     box-shadow:none;
 }
+
+.preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+}
