@@ -4,6 +4,18 @@
     var body = document.getElementsByTagName('body')[0];
     body.removeClass('preload');
 
+    // Realisations
+
+    var realisationToggles = document.querySelectorAll('.realisation-toggle');
+    for(var i=0, l=realisationToggles.length; i<l; i++){
+        realisationToggles[i].addEventListener('click', function(event){
+            var realisation = event.target.closest('.realisation');
+            toggleRealisation(realisation);
+            event.preventDefault();
+        });
+    }
+
+
     /**
      * SKILLS BAR
      */
@@ -167,11 +179,38 @@
         hideModal();
     }
 
+
+    function toggleRealisation(realisation){
+        var isCollapsed = realisation.hasClass('collapsed');
+
+        if(isCollapsed) {
+            expandRealisation(realisation);
+        } else {
+            collapseRealisation(realisation);
+        }
+    };
+
+    function expandRealisation(realisation) {
+        var realisationBody = realisation.querySelector('.realisation-body');
+        var realisationExpandedHeight = realisationBody.scrollHeight;
+
+        realisation.removeClass('collapsed');
+        realisationBody.style.height = realisationExpandedHeight + 'px';
+    }
+
+    function collapseRealisation(realisation) {
+        var realisationBody = realisation.querySelector('.realisation-body');
+
+        realisation.addClass('collapsed');
+        realisationBody.style.height = '0px';
+    }
+
     function showModal(target){
         var modal = document.getElementById(target);
         modal.addClass('md-show');
         body.addClass('noScroll');
     };
+
     function hideModal(){
         var modal = document.querySelector('.md-modal.md-show');
         modal.removeClass('md-show');

@@ -4,13 +4,28 @@
         <h4>Projets réalisés</h4>
         <div class="realisations_container">
             {% for project in projects %}
-                <div class="realisation">
-                    <h5>{{ project.name }}</h5>
-                    <div class="links">
-                        {% for link in project.links.all %}
-                            <a href="{{ link.url }}" class='link'>{{ link.icon }}</a>
-                        {% endfor %}
+                <div class="realisation collapsed">
+                    <div class="realisation-header">
+                        <h5>{{ project.name }}</h5>
+                        <div class="links">
+                            {% for link in project.links.all %}
+                                <a href="{{ link.url }}" class='link'>{{ link.icon }}</a>
+                            {% endfor %}
+                        </div>
                     </div>
+                    <div class="realisation-body">
+                        <p class="realisation-description">{{ project.description|linebreaksbr }}</p>
+                        <div class="realisation-technologies">
+                            {% for technology in project.technologies.all %}
+                                <div class="realisation-technology">
+                                    <h6>{{ technology.name }}</h6>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <button type="button" class="realisation-toggle">
+                        <p>8</p>
+                    </button>
                 </div>
             {% endfor %}
         </div>
