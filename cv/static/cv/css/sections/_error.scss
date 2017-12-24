@@ -1,6 +1,6 @@
 h1{
+    @include font-titles;
     font-size: 100px;
-    font-family: $font-titles;
     color:$color-blue;
     text-align: center;
 }

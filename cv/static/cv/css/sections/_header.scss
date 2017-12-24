@@ -29,7 +29,7 @@ h1,h2{
 }
 h1{
     font-size: 75px;
-    font-family: $font-titles;
+    @include font-titles;
 }
 h2{
     line-height: 44px;

@@ -1,7 +1,7 @@
 /**
  *
  * BREAKPOINTS
- * 
+ *
  */
 
 @mixin breakpoint-tiny {
@@ -82,22 +82,22 @@
 
   	@each $o in top right bottom left {
         $i: index($args, $o);
- 
+
     	@if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number  {
           	#{$o}: nth($args, $i + 1);
     	}
   	}
 
 }
- 
+
 @mixin absolute($args : "") {
     @include position(absolute, $args);
 }
- 
+
 @mixin fixed($args : "") {
     @include position(fixed, $args);
 }
- 
+
 @mixin relative($args : "") {
     @include position(relative, $args);
 }
@@ -109,7 +109,7 @@
 @mixin size($args) {
 
 	@if type-of($args) == number{
-		
+
 		width  : $args;
 		height : $args;
 
@@ -117,7 +117,7 @@
 
 		@each $o in width height max-width max-height min-width min-height {
 		  	$i: index($args, $o);
-		
+
 		  	@if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number  {
 		        #{$o}: nth($args, $i + 1);
 		  	}
@@ -131,10 +131,16 @@
  */
 
 @mixin inline-block($align : null){
-	
+
 	display: inline-block;
 	@if $align != null {
 		vertical-align: $align;
 	}
 
+}
+
+// Font titles
+@mixin font-titles {
+	font-family: $font-titles;
+	letter-spacing: 1px;
 }

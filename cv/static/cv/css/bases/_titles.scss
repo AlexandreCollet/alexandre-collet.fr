@@ -1,9 +1,8 @@
 h3{
+    @include font-titles;
     text-align: left;
-    font-family: $font-titles;
     font-size: 50px;
     border-bottom: 8px solid;
-    letter-spacing: 1px;
     padding : 0 25px;
     #home &{color:$color-blue;}
     #folio &{color:$color-green;}
@@ -12,11 +11,10 @@ h3{
 }
 
 h4{
+    @include font-titles;
     text-align: right;
-    font-family: $font-titles;
     border-bottom: 2px solid;
     font-size: 30px;
-    letter-spacing: 1px;
     font-weight: bold;
     #home &{color:$color-blue;}
     #folio &{color:$color-green;}
@@ -25,9 +23,8 @@ h4{
 }
 
 h5{
-    font-family:$font-titles;
+    @include font-titles;
     font-size: 25px;
-    letter-spacing: 1px;
     #github & {color:$color-text;}
     #timeline &{color:$color-text;}
     #skills &{
@@ -39,8 +36,7 @@ h5{
 }
 
 h6 {
-    font-family: $font-titles;
+    @include font-titles;
     font-size: 20px;
     color: white;
-    letter-spacing: 1px;
 }
