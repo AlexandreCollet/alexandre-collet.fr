@@ -63,6 +63,7 @@
 }
 
 .realisation-body {
+    box-sizing: content-box;
     z-index: 1;
     position: relative;
     top: -50px;

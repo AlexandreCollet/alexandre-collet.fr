@@ -15,6 +15,13 @@
         });
     }
 
+    var timeout = null;
+
+    window.addEventListener('resize', function(event) {
+        clearTimeout(timeout);
+        timeout = setTimeout(expandRealisations, 250);
+    });
+
 
     /**
      * SKILLS BAR
@@ -185,23 +192,32 @@
 
         if(isCollapsed) {
             expandRealisation(realisation);
+            realisation.removeClass('collapsed');
         } else {
             collapseRealisation(realisation);
+            realisation.addClass('collapsed');
         }
     };
 
+    function expandRealisations() {
+        var expandedRealisations = document.querySelectorAll('.realisation:not(.collapsed)');
+        for(var i=0, l=expandedRealisations.length; i<l; i++){
+            expandRealisation(expandedRealisations[i]);
+        }
+    }
+
     function expandRealisation(realisation) {
         var realisationBody = realisation.querySelector('.realisation-body');
-        var realisationExpandedHeight = realisationBody.scrollHeight;
+        var realisationDescription = realisation.querySelector('.realisation-description');
+        var realisationTechnologies = realisation.querySelector('.realisation-technologies');
 
-        realisation.removeClass('collapsed');
-        realisationBody.style.height = realisationExpandedHeight + 'px';
+        var realisationBodyHeight = realisationTechnologies.outerHeight + realisationDescription.outerHeight;
+        realisationBody.style.height = realisationBodyHeight + 'px';
     }
 
     function collapseRealisation(realisation) {
         var realisationBody = realisation.querySelector('.realisation-body');
 
-        realisation.addClass('collapsed');
         realisationBody.style.height = '0px';
     }
 
