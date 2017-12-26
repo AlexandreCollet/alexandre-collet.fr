@@ -117,7 +117,7 @@ def error404(request, exception):
 
 
 @requires_csrf_token
-def error500(request, exception):
+def error500(request):
     template_name = 'cv/error.html'
     context = {
         'error_code': 500,
