@@ -20,13 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dw0ibt6v3_!x1=*)54e(%pb-$p3eyd#7em09^3ayw!dh=fisod'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+if os.environ.get('DJANGO_HOST'):
+    ALLOWED_HOSTS.append(os.environ['DJANGO_HOST'])
 
 # Application definition
 
@@ -85,9 +86,14 @@ WSGI_APPLICATION = 'alexandre_collet.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['DJANGO_DB_NAME'],
+        'USER': os.environ['DJANGO_DB_USER'],
+        'PASSWORD': os.environ['DJANGO_DB_PASSWORD'],
+        'HOST': os.environ['DJANGO_DB_HOST'],
+        'PORT': os.environ['DJANGO_DB_PORT'],
+        'ATOMIC_REQUESTS': True,
+    },
 }
 
 
@@ -113,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'UTC'
 
@@ -127,13 +133,38 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'sass_processor.finders.CssFinder',
     'compressor.finders.CompressorFinder',
 ]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR + '/static'
+
+MEDIA_ROOT = BASE_DIR + "/media/"
+MEDIA_URL = os.environ['DJANGO_MEDIA_URL']
+MEDIA_URL = os.environ['DJANGO_HOST'] + '/media/'
+
+# Emails
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.environ['DJANGO_EMAIL_HOST']
+EMAIL_PORT = os.environ['DJANGO_EMAIL_PORT']
+EMAIL_HOST_USER = os.environ['DJANGO_EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['DJANGO_EMAIL_HOST_PASSWORD']
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+
+EMAIL_SENDER = EMAIL_HOST_USER
+EMAIL_RECIPIENT = os.environ['DJANGO_EMAIL_RECIPIENT']
+
+# Github
+
+GITHUB_TOKEN = os.environ['DJANGO_GITHUB_TOKEN']
+
+# Settings local
 
 try:
     from .settings_local import *
