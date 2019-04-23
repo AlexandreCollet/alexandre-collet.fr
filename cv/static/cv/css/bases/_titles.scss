@@ -1,8 +1,8 @@
 h3{
     @include font-titles;
     text-align: left;
-    font-size: 50px;
-    border-bottom: 8px solid;
+    font-size: $font-size-h3;
+    border-bottom: 6px solid;
     padding : 0 25px;
     #home &{color:$color-blue;}
     #folio &{color:$color-green;}
@@ -14,7 +14,7 @@ h4{
     @include font-titles;
     text-align: right;
     border-bottom: 2px solid;
-    font-size: 30px;
+    font-size: $font-size-h4;
     font-weight: bold;
     #home &{color:$color-blue;}
     #folio &{color:$color-green;}
@@ -24,7 +24,7 @@ h4{
 
 h5{
     @include font-titles;
-    font-size: 25px;
+    font-size: $font-size-h5;
     #github & {color:$color-text;}
     #timeline &{color:$color-text;}
     #skills &{
@@ -37,6 +37,6 @@ h5{
 
 h6 {
     @include font-titles;
-    font-size: 20px;
+    font-size: $font-size-h6;
     color: white;
 }

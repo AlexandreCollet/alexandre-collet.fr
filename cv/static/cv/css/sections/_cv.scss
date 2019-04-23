@@ -26,7 +26,7 @@
     .skill_secondary{
         flex: 1 0 auto;
         @include size(height 31px);
-        border-radius: 5px;
+        border-radius: $border-radius;
         background-color: $color-yellow;
         border : 3px solid $color-yellow;
         margin-right: $gutter/4;
@@ -47,11 +47,11 @@
         border-bottom: 1px solid;
         color:$color-text;
         font-family: $font-texts;
-        font-size: 12px;
+        font-size: $font-size * 0.75;
     }
     li{
         margin-left: 50px;
-        font-size: 18px;
+        font-size: $font-size;
         color:$color-text;
         font-family: $font-texts;
     }

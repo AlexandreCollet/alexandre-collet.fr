@@ -9,7 +9,9 @@ $alert-types : (
 	"warning" : orange,
 	"error"   : red
 ) !default;
-
+$alert-border-radius: 5px !default;
+$alert-animation-duration: 1s !default;
+$alert-transition-duration: 0.3s !default;
 
 /**
  * PUBLIC MIXINS
@@ -22,13 +24,15 @@ $alert-types : (
 	@include fixed(right 25px);
 	padding: 25px;
 	@include size(max-width 250px);
-	border-radius: 5px;
+	border-radius: $alert-border-radius;
 	@include animation(
 		$name:fadeIn,
-		$duration:1s,
+		$duration:$alert-animation-duration,
 		$timingFunction:ease
 	);
-	transition: opacity 0.5s ease,top 0.5s ease;
+	transition: opacity $alert-transition-duration ease,
+	            top $alert-transition-duration ease,
+	            background $alert-transition-duration ease;
 
 	font-family: $alert-font;
 	font-weight: bold;
@@ -38,7 +42,10 @@ $alert-types : (
 
 	background: $color;
 
-	&:hover{cursor: pointer;}
+	&:hover{
+		cursor: pointer;
+		background: darken($color,5%);
+	}
 
 }
 

@@ -6,6 +6,8 @@
  $button-color       : white !default;
  $button-font        : "arial" !default;
  $button-font-size   : 20px !default;
+ $button-border-radius: 5px !default;
+ $button-transition-duration: 0.3s !default;
  $button-bgColorsMap : (
     "red"    : red,
     "yellow" : yellow,
@@ -58,7 +60,7 @@
     @include relative;
     @include size(height $button-height);
     line-height: $button-height;
-    border-radius: 5px;
+    border-radius: $button-border-radius;
     color: $button-color;
     font-family: $button-font;
     font-size: $button-font-size;
@@ -69,11 +71,9 @@
 @mixin __btn-color($color){
 
     background-color: $color;
-    box-shadow: 0 4px 0 darken($color,10%);
+    transition: background-color $button-transition-duration;
     &:hover{
-        top:2px;
         background-color: darken($color,5%);
-        box-shadow: 0 2px 0 darken($color,20%);
     }
 
 }

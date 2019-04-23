@@ -4,10 +4,14 @@
     border-radius: 50%;
     background-color : $color-text;
     font-family: $font-icons;
-    font-size: 25px;
+    font-size: $font-size;
     line-height: 50px;
     text-align: center;
     color:white;
-    transition: bottom 0.5s ease;
+    transition: bottom $transition-duration ease,
+                background-color $transition-duration ease;
     &.display{bottom:50px;}
+    &:hover{
+        background-color: darken($color-text, 5%);
+    }
 }

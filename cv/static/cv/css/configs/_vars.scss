@@ -1,3 +1,10 @@
+//
+// GLOBAL
+//
+
+$border-radius: 3px;
+$transition-duration: 0.4s;
+
 /**
  * COLORS
  */
@@ -8,7 +15,7 @@ $color-yellow : #F8C93D;
 $color-red    : #fd6a62;
 
 $color-text   : #999;
-$color-bg     : #F0F0F0;
+$color-bg     : #EFF1F3;
 
 $sectionsColors : (
 	"blue"   : #16a6b6,
@@ -19,10 +26,11 @@ $sectionsColors : (
 $colors : map_merge(
 	(
 		"text" : #999,
-		"bg"   : #F0F0F0
+		"bg"   : #EFF1F3
 	),
 	$sectionsColors
 );
+
 /**
  * FONTS
  */
@@ -30,6 +38,13 @@ $colors : map_merge(
 $font-titles : "bebas";
 $font-texts  : "ubuntu";
 $font-icons  : "basics_icons";
+$font-size: 16px;
+$font-size-h1: 64px;
+$font-size-h2: 32px;
+$font-size-h3: 40px;
+$font-size-h4: 24px;
+$font-size-h5: 24px;
+$font-size-h6: 20px;
 
 $font-icons-map : (
 	"twitter"  : 't',
@@ -54,6 +69,8 @@ $button-height      : 50px;
 $button-color       : white;
 $button-font        : $font-titles;
 $button-font-size   : 20px;
+$button-border-radius: $border-radius;
+$button-transition-duration: $transition-duration;
 $button-bgColorsMap : $sectionsColors;
 
 $button-icon-font      : $font-icons;
@@ -95,16 +112,13 @@ $alert-types : (
 	"warning" : color("yellow"),
 	"error"   : color("red")
 );
+$alert-border-radius: $border-radius;
+$alert-animation-duration: $transition-duration * 2;
+$alert-transition-duration: $transition-duration;
 
-/**
- * LOADERS PLUGIN
- */
-$loader-size: 25px;
-$loader-color-default: $color-text;
-$loader-margin: $gutter;
-$loader-icon-font: $font-icons;
-$loader-icon-char: "0";
-$loader-colorsMap: $sectionsColors;
-$loader-animation-name: 'loader-spin-animation';
-$loader-animation-duration: 1s;
-$loader-animation-function: linear;
+//
+// BAR PLUGIN
+//
+
+$bar-border-radius: $border-radius;
+$bar-border-size: 2px;

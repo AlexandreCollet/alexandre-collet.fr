@@ -28,15 +28,13 @@ h1,h2{
     }
 }
 h1{
-    font-size: 75px;
+    font-size: $font-size-h1;
     @include font-titles;
 }
 h2{
-    line-height: 44px;
-    font-size: 35px;
+    font-size: $font-size-h2;
     font-family: $font-texts;
 }
-
 /**
  * MENU
  */
@@ -45,7 +43,8 @@ nav{font-size: 0;}
 nav a{
     @include relative;
     font-family: $font-texts;
-    font-size: 18px;
+    font-size: $font-size;
+    font-weight: bold;
     text-align: center;
     color:white;
 }
