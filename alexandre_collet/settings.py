@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'cv.apps.CvConfig',
 
     'django_extensions',
-    'jet',
     'compressor',
     'sass_processor',
     'ordered_model',
