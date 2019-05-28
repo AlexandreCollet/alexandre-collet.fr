@@ -1,22 +1,15 @@
-#svgContainer{
-	@include relative;
-	@include inline-block(middle);
-	@include size(width 100%);
-	padding-bottom: 100%;
-	@include breakpoint-small{
-		@include size(width 50%);
-		margin-left: 25%;
-		padding-bottom:50%;
-	}
-	@include breakpoint-medium-large{
-		@include size(width 40%);
-		padding-bottom: 40%;
-	}
-}
-
-.svg-content{
-	display: block;
-	@include absolute;
+#photo {
+    @include inline-block(middle);
+    @include size(width 100%);
+    border-radius: 50%;
+    padding: $gutter;
+    @include breakpoint-small{
+        @include size(width 50%);
+        margin-left: 25%;
+    }
+    @include breakpoint-medium-large{
+        @include size(width 40%);
+    }
 }
 
 #presentation{
@@ -25,7 +18,7 @@
 	@include breakpoint-medium-large{
 		@include size(width 60%);
 	}
-	padding: 25px;
+	padding: $gutter;
     font-size: $font-size;
     color:$color-text;
     font-family: $font-texts;
