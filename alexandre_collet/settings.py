@@ -142,9 +142,8 @@ STATICFILES_FINDERS = [
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static'
 
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR + "/media/"
-MEDIA_URL = os.environ['DJANGO_MEDIA_URL']
-MEDIA_URL = os.environ['DJANGO_HOST'] + '/media/'
 
 # Emails
 
