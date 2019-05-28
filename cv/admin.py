@@ -9,11 +9,13 @@ from .models import (
 )
 
 
+@admin.register(Project)
 class ProjectAdmin(OrderedModelAdmin):
     list_display = ('move_up_down_links', '__str__', 'name')
     list_display_links = ('__str__', )
 
 
+@admin.register(ProjectLink)
 class ProjectLinkAdmin(OrderedModelAdmin):
     list_display = (
         'move_up_down_links', '__str__', 'project_name', 'name'
@@ -25,6 +27,7 @@ class ProjectLinkAdmin(OrderedModelAdmin):
     project_name.short_description = 'Project'
 
 
+@admin.register(ProjectTechnology)
 class ProjectTechnologyAdmin(OrderedModelAdmin):
     list_display = (
         'move_up_down_links', '__str__', 'project_name', 'name'
@@ -36,6 +39,7 @@ class ProjectTechnologyAdmin(OrderedModelAdmin):
     project_name.short_description = 'Project'
 
 
+@admin.register(ProjectScreenshot)
 class ProjectScreenshotAdmin(OrderedModelAdmin):
     list_display = (
         'move_up_down_links', '__str__', 'project_name', 'name'
@@ -47,16 +51,19 @@ class ProjectScreenshotAdmin(OrderedModelAdmin):
     project_name.short_description = 'Project'
 
 
+@admin.register(Skill)
 class SkillAdmin(OrderedModelAdmin):
     list_display = ('move_up_down_links', '__str__', 'name', 'level', 'main')
     list_display_links = ('__str__', )
 
 
+@admin.register(Experience)
 class ExperienceAdmin(ModelAdmin):
     list_display = ('__str__', 'category', 'name')
     list_display_links = ('__str__', )
 
 
+@admin.register(ExperienceActivity)
 class ExperienceActivityAdmin(OrderedModelAdmin):
     list_display = (
         'move_up_down_links', '__str__', 'experience_name', 'description'
@@ -68,16 +75,7 @@ class ExperienceActivityAdmin(OrderedModelAdmin):
     experience_name.short_description = 'Experience'
 
 
+@admin.register(SocialNetwork)
 class SocialNetworkAdmin(OrderedModelAdmin):
     list_display = ('move_up_down_links', '__str__', 'name', 'url')
     list_display_links = ('__str__', )
-
-
-admin.site.register(Project, ProjectAdmin)
-admin.site.register(ProjectLink, ProjectLinkAdmin)
-admin.site.register(ProjectTechnology, ProjectTechnologyAdmin)
-admin.site.register(ProjectScreenshot, ProjectScreenshotAdmin)
-admin.site.register(Skill, SkillAdmin)
-admin.site.register(Experience, ExperienceAdmin)
-admin.site.register(ExperienceActivity, ExperienceActivityAdmin)
-admin.site.register(SocialNetwork, SocialNetworkAdmin)
