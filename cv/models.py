@@ -1,6 +1,3 @@
-import os
-from uuid import uuid4
-
 from django.db.models import Model
 from django.db.models.fields import (
     BooleanField, DateField, CharField, URLField, TextField, IntegerField,
@@ -10,9 +7,10 @@ from django.db.models.fields.files import ImageField
 from django.db.models.fields.related import ForeignKey
 from django.db.models.deletion import CASCADE
 from django.utils.text import slugify
-from django.utils.deconstruct import deconstructible
 
 from ordered_model.models import OrderedModel
+
+from cv.decorators import UploadToPathAndRename
 
 
 class Project(OrderedModel):
@@ -62,18 +60,6 @@ class ProjectTechnology(OrderedModel):
         unique_together = ('project', 'name')
         ordering = ('project', 'order')
         verbose_name_plural = 'Project Technologies'
-
-
-@deconstructible
-class UploadToPathAndRename(object):
-    def __init__(self, path):
-        self.sub_path = path
-
-    def __call__(self, instance, filename):
-        ext = filename.split('.')[-1]
-        uuid = uuid4().hex
-        filename = '{}.{}'.format(uuid, ext)
-        return os.path.join(self.sub_path, filename)
 
 
 class ProjectScreenshot(OrderedModel):
