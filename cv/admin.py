@@ -3,7 +3,7 @@ from django.contrib.admin import ModelAdmin
 
 from ordered_model.admin import OrderedModelAdmin
 
-from .models import (
+from cv.models import (
     Project, ProjectLink, ProjectTechnology, ProjectScreenshot,
     Experience, ExperienceActivity, Skill, SocialNetwork
 )

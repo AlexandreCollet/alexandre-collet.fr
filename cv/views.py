@@ -10,8 +10,8 @@ from django.http import (
 
 from github import Github
 
-from .models import Skill, Experience, Project, SocialNetwork
-from .forms import ContactForm
+from cv.models import Skill, Experience, Project, SocialNetwork
+from cv.forms import ContactForm
 
 
 class IndexView(TemplateView):

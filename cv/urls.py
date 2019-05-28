@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import IndexView, ContactView
+from cv.views import IndexView, ContactView
 
 app_name = 'cv'
 
