@@ -10,7 +10,7 @@ from django.http import (
 
 from github import Github
 
-from cv.models import Skill, Experience, Project, SocialNetwork
+from cv.models import Resume, Skill, Experience, Project, SocialNetwork
 from cv.forms import ContactForm
 
 
@@ -22,6 +22,7 @@ class IndexView(TemplateView):
         github_client = Github(settings.GITHUB_TOKEN)
 
         context = {}
+        context['resume'] = Resume.objects.first()
         context['repositories'] = github_client.get_user().get_repos()
         context['projects'] = Project.objects.all().prefetch_related(
             'technologies', 'links', 'screenshots'
