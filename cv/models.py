@@ -68,7 +68,9 @@ class ProjectScreenshot(OrderedModel):
         related_name='screenshots', on_delete=CASCADE
     )
     name = CharField(max_length=255)
-    image = ImageField(upload_to=UploadToPathAndRename('projects/screenshots'))
+    image = ImageField(
+        upload_to=UploadToPathAndRename('cv/projects/screenshots')
+    )
 
     def __str__(self):
         return self.project.name + ' - ' + self.name
