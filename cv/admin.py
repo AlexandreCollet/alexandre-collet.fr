@@ -4,9 +4,15 @@ from django.contrib.admin import ModelAdmin
 from ordered_model.admin import OrderedModelAdmin
 
 from cv.models import (
-    Project, ProjectLink, ProjectTechnology, ProjectScreenshot,
+    Resume, Project, ProjectLink, ProjectTechnology, ProjectScreenshot,
     Experience, ExperienceActivity, Skill, SocialNetwork
 )
+
+
+@admin.register(Resume)
+class ResumeAdmin(ModelAdmin):
+    list_display = ('__str__', 'title')
+    list_display_links = ('__str__', )
 
 
 @admin.register(Project)

@@ -1,16 +1,46 @@
-from django.db.models import Model
-from django.db.models.fields import (
+from django.db.models import (
+    Model, CASCADE,
     BooleanField, DateField, CharField, URLField, TextField, IntegerField,
-    PositiveSmallIntegerField
+    PositiveSmallIntegerField, ImageField, FileField, ForeignKey
 )
-from django.db.models.fields.files import ImageField
-from django.db.models.fields.related import ForeignKey
-from django.db.models.deletion import CASCADE
 from django.utils.text import slugify
 
 from ordered_model.models import OrderedModel
 
 from cv.decorators import UploadToPathAndRename
+
+
+class Resume(Model):
+    firstname = CharField(max_length=50)
+    lastname = CharField(max_length=50)
+    title = CharField(max_length=200, null=True, blank=True)
+    summary = TextField(null=True, blank=True)
+    photo = ImageField(
+        null=True,
+        blank=True,
+        upload_to=UploadToPathAndRename('cv/resumes/photos'),
+    )
+    pdf_file = FileField(
+        null=True,
+        blank=True,
+        upload_to=UploadToPathAndRename('cv/resumes/pdfs'),
+    )
+
+    def __str__(self):
+        return self.fullname
+
+    @property
+    def fullname(self):
+        return self.get_fullname()
+
+    def get_fullname(self):
+        fullname_format_string = "{firstname} {lastname}"
+        fullname_kwargs = {
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+        }
+
+        return fullname_format_string.format(**fullname_kwargs)
 
 
 class Project(OrderedModel):
