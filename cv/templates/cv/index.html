@@ -4,7 +4,7 @@
 {% load sass_tags %}
 {% load compress %}
 
-{% block title %}Alexandre Collet | Developpeur web full stack{% endblock title %}
+{% block title %}{{ resume.fullname }} | {{ resume.title }}{% endblock title %}
 
 {% block css %}
     <link rel="stylesheet" media="all" href="{% sass_src 'cv/css/style.scss' %}" />
