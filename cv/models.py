@@ -164,15 +164,3 @@ class ExperienceActivity(OrderedModel):
     class Meta(OrderedModel.Meta):
         ordering = ('experience', 'order')
         verbose_name_plural = 'Experience Activities'
-
-
-class SocialNetwork(OrderedModel):
-    name = CharField(max_length=50, unique=True)
-    url = URLField()
-
-    def __str__(self):
-        return self.name
-
-    class Meta(OrderedModel.Meta):
-        pass
-

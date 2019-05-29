@@ -10,7 +10,7 @@ from django.http import (
 
 from github import Github
 
-from cv.models import Resume, Skill, Experience, Project, SocialNetwork
+from cv.models import Resume, Skill, Experience, Project
 from cv.forms import ContactForm
 
 
@@ -27,7 +27,6 @@ class IndexView(TemplateView):
         context['projects'] = Project.objects.all().prefetch_related(
             'technologies', 'links', 'screenshots'
         )
-        context['social_networks'] = SocialNetwork.objects.all()
         context['skills'] = {
             'mains': Skill.objects.filter(main=True).all(),
             'others': Skill.objects.filter(main=False).all(),

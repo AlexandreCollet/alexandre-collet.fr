@@ -5,7 +5,7 @@ from ordered_model.admin import OrderedModelAdmin
 
 from cv.models import (
     Resume, Project, ProjectLink, ProjectTechnology, ProjectScreenshot,
-    Experience, ExperienceActivity, Skill, SocialNetwork
+    Experience, ExperienceActivity, Skill
 )
 
 
@@ -79,9 +79,3 @@ class ExperienceActivityAdmin(OrderedModelAdmin):
     def experience_name(self, obj):
         return obj.experience.name
     experience_name.short_description = 'Experience'
-
-
-@admin.register(SocialNetwork)
-class SocialNetworkAdmin(OrderedModelAdmin):
-    list_display = ('move_up_down_links', '__str__', 'name', 'url')
-    list_display_links = ('__str__', )
