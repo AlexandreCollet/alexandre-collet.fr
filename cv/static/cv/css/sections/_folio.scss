@@ -69,7 +69,7 @@
     @include size(height 0px);
     background-color: white;
     border-radius: 5px;
-    border: 3px solid $color-green;
+    border: 2px solid $color-green;
     transition: height 0.5s ease;
     overflow: hidden;
     padding: 47px $gutter 0 $gutter;
@@ -94,7 +94,7 @@
     @include size(height 31px);
     border-radius: $border-radius;
     background-color: $color-green;
-    border : 3px solid $color-green;
+    border : 2px solid $color-green;
     margin-right: $gutter/4;
     margin-bottom: $gutter/4;
     text-align: center;
@@ -109,6 +109,7 @@
     padding-top: 20px;
     transition: transform 0.5s ease;
     p {
+        height: 100%;
         text-align: center;
         color: white;
         font-family: $font-icons;
@@ -125,7 +126,6 @@
     &:after{
         content: "";
         display: block;
-        @include relative(top -1px);
         @include size(0);
         border-top: 20px solid;
         border-left: 20px solid transparent;
@@ -156,8 +156,15 @@
     }
 }
 
-#linkGithub{
-    display: block;
+#folioLinkContainer {
+    text-align: center;
+    margin-bottom: $gutter;
+}
+
+.folioLink{
+    display: inline-block;
     @include size(width 250px);
-    margin: $gutter auto 0;
+    &:not(:last-child){
+        margin-right: $gutter;
+    }
 }

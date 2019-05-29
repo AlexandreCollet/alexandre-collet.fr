@@ -50,6 +50,15 @@
                 </div>
             {% endfor %}
         </div>
-        <a href="https://github.com/AlexandreCollet" id="linkGithub" class="btn btn-green btn-icon-github" title="Se rendre sur mon profil Github">Voir mon profil Github</a>
     </section>
+    <div id="folioLinkContainer">
+        {% spaceless %}
+            {% if resume.github %}
+                <a href="{{ resume.github }}" class="folioLink btn btn-green btn-icon-github" title="Se rendre sur mon profil Github">Mon Github</a>
+            {% endif %}
+            {% if resume.docker %}
+                <a href="{{ resume.docker }}" class="folioLink btn btn-green btn-icon-docker" title="Se rendre sur mon profil Docker hub">Mon Docker Hub</a>
+            {% endif %}
+        {% endspaceless %}
+    </div>
 </section>

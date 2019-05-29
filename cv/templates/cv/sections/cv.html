@@ -42,7 +42,14 @@
         </div>
     </section>
 
-    <div>
-        <a href="{{ resume.pdf_file.url }}" id="downloadCV" class="btn btn-yellow btn-icon-download" title="Télécharger mon Curriculum Vitae">Télécharger mon CV</a>
+    <div id="cvLinkContainer">
+        {% spaceless %}
+            {% if resume.linkedin %}
+                <a href="{{ resume.linkedin }}" class="cvLink btn btn-yellow btn-icon-linkedin" title="Se rendre sur mon profil Linkedin">Mon Linkedin</a>
+            {% endif %}
+            {% if resume.pdf_file %}
+                <a href="{{ resume.pdf_file.url }}" class="cvLink btn btn-yellow btn-icon-download" title="Télécharger mon Curriculum Vitae">Télécharger mon CV</a>
+            {% endif %}
+        {% endspaceless %}
     </div>
 </section>

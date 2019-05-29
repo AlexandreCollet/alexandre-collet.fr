@@ -56,9 +56,16 @@
         font-family: $font-texts;
     }
 }
-/* ___________dl CV________________ */
-#downloadCV{
-    display: block;
-    margin: $gutter auto;
+
+#cvLinkContainer {
+    margin: $gutter 0;
+    text-align: center;
+}
+
+.cvLink{
+    display: inline-block;
     @include size(width 250px);
+    &:not(:last-child){
+        margin-right: $gutter;
+    }
 }
