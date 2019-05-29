@@ -26,6 +26,11 @@ class Resume(Model):
         upload_to=UploadToPathAndRename('cv/resumes/pdfs'),
     )
 
+    github = URLField(blank=True, null=True)
+    docker = URLField(blank=True, null=True)
+    linkedin = URLField(blank=True, null=True)
+    twitter = URLField(blank=True, null=True)
+
     def __str__(self):
         return self.fullname
 
