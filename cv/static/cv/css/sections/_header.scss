@@ -42,7 +42,7 @@ h2{
 nav{font-size: 0;}
 nav a{
     @include relative;
-    font-family: $font-texts;
+    font-family: $font-texts !important;
     font-size: $font-size;
     font-weight: bold;
     text-align: center;
