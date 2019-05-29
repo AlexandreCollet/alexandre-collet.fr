@@ -2,9 +2,18 @@
     <h3>Comment me contacter ?</h3>
     <section id="social">
         <h4>Sur les réseaux sociaux</h4>
-        {% for social_network in social_networks %}
-            <a href="{{ social_network.url }}" class="btn btn-red btn-icon-{{ social_network.name | lower }}" title="Se rendre sur mon profil {{ social_network.name | capfirst }}">{{ social_network.name }}</a>
-        {% endfor %}
+        {% if resume.linkedin %}
+            <a href="{{ resume.linkedin }}" class="btn btn-red btn-icon-linkedin" title="Se rendre sur mon profil Linkedin">Linkedin</a>
+        {% endif %}
+        {% if resume.github %}
+            <a href="{{ resume.github }}" class="btn btn-red btn-icon-github" title="Se rendre sur mon profil Github">Github</a>
+        {% endif %}
+        {% if resume.docker %}
+            <a href="{{ resume.docker }}" class="btn btn-red btn-icon-docker" title="Se rendre sur mon profil Docker">Docker</a>
+        {% endif %}
+        {% if resume.twitter %}
+            <a href="{{ resume.twitter }}" class="btn btn-red btn-icon-twitter" title="Se rendre sur mon profil Twitter">Twitter</a>
+        {% endif %}
     </section>
     <form id="contact_form" action="{% url 'cv:contact' %}" method="POST">
         <h4>Par email</h4>
