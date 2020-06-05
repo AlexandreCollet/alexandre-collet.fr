@@ -1,4 +1,4 @@
-django==1.11.20
+django==1.11.29
 django-compressor==2.1.1
 django-extensions==1.7.9
 django-htmlmin==0.10.0
